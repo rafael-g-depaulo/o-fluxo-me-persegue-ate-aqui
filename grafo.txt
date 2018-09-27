@@ -1,0 +1,41 @@
+graph
+[
+  node
+  [
+    id 1
+    nome pocoes
+    creditos 4
+    dificuldade 3.0
+  ]
+  node
+  [
+    id 2
+    nome defesa_contra_a_arte_das_trevas
+    creditos 4
+    dificuldade 2.0
+  ]
+  node
+  [
+    id 3
+    nome quadribol
+    creditos 2
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 4
+    nome historia_da_magia
+    creditos 6
+    dificuldade 2.0
+  ]
+  edge
+  [
+    source 1
+    target 4
+  ]
+  edge
+  [
+    source 4
+    target 2
+  ]
+]
