@@ -11,6 +11,9 @@
 using namespace std;
 
 typedef vector<vector<int> > Grafo;
+typedef vector<string> Nomes;
+typedef vector<int> Creditos;
+typedef vector<float> Estresses;
 
 // createGrafo: A partir do nome do arquivo, chama as funções para criação do grafo.
 vector<vector<int> > createGrafo (const string& fileName);
@@ -23,7 +26,7 @@ size_t grafoSize (fstream& fileStream);
 void makeNodes (size_t size, vector<vector<int> >& grafo);
 
 // monta os vetores com informações sobre as matérias
-void setupInfo (size_t size, vector<string>& names, vector<int>& credits, vector<float>& stress);
+void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress);
 
 // connectEdge: a partir do vetor principal do grafo e de dois vértices, adiciona às listas 
 // de adjacência de um o vértice do outro.

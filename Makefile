@@ -11,7 +11,7 @@
 CC = g++
 
 # Flags:
-CFLAGS = -c -Wall -std=c++11
+CFLAGS = -c -g -Wall -std=c++11
 
 # modulos
 MODULES = construction.o grau.o

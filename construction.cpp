@@ -17,10 +17,18 @@ using namespace std;
 vector<vector<int> > createGrafo (const string& fileName) {
     fstream arquivo(fileName);
 
-    Grafo g;
+    int _size = grafoSize(arquivo); 
+
+    Grafo g(_size);
+    Nomes names(_size);
+    Creditos credits(_size);
+    Estresses stress(_size);
     
-    makeNodes(grafoSize(arquivo), g);
+    makeNodes(_size, g);
     makeEdges(arquivo, g);
+
+    fstream file(fileName);
+    setupInfo(file, names, credits, stress);
 
     return g;
 }
@@ -85,5 +93,37 @@ void makeEdges (fstream& fileStream, vector<vector<int> >& grafo) {
             // e o nosso código trabalha com indices começando em 0
             connectEdge(grafo, v1 - 1, v2 - 1);
 		}
+	}
+}
+
+
+// monta os vetores com informações sobre as matérias
+void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress) {
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	string buffer;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("nome") != string::npos) {
+			int   index = 0, credit = 0;
+			char  name [40];
+			float estresse = 0;
+
+      sscanf(buffer.c_str(), "    nome %s", name);
+      getline(fileStream, buffer);
+      sscanf(buffer.c_str(), "    creditos %d", &credit);
+      getline(fileStream, buffer);
+      sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
+
+      names[index] = name;
+      credits[index] = credit;
+      stress[index] = estresse;
+      index++;
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      	return;
+    }
 	}
 }
