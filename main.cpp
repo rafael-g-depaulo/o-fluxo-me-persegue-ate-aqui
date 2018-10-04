@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 		cout << vert << " ";
 	}
 	cout << "\n";
-
-	return 0; 
+	
+	return 0;
 
 }
