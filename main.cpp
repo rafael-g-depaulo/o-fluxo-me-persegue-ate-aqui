@@ -8,12 +8,25 @@
 #include <vector>
 #include <list>
 #include "construction.h"
+#include "ordenacao.h"
+#include "dfs.h"
 
 using namespace std;
+
+void a(int v) {
+	cout << v << " ";
+}
 
 int main(int argc, char** argv) {
 
 	Grafo karate = createGrafo ("grafo.txt");
+
+	deque<int> ordTop = ordenacaoTopologica(karate);
+
+	for (auto vert: ordTop) {
+		cout << vert << " ";
+	}
+	cout << "\n";
 
 	return 0; 
 
