@@ -3,30 +3,247 @@ graph
   node
   [
     id 1
-    nome pocoes
-    creditos 4
+    nome Cálculo_1
+    creditos 6
     dificuldade 3.0
   ]
   node
   [
     id 2
-    nome defesa_contra_a_arte_das_trevas
+    nome Introdução_a_Sistemas_Computacionais
     creditos 4
     dificuldade 2.0
   ]
   node
   [
     id 3
-    nome quadribol
-    creditos 2
+    nome Fundamentos_Teóricos_da_Computação
+    creditos 4
     dificuldade 1.0
   ]
   node
   [
     id 4
-    nome historia_da_magia
+    nome Algoritmos_e_Programação_de_Computadores
     creditos 6
     dificuldade 2.0
+  ]
+  node
+  [
+    id 5
+    nome Informática_e_Sociedade
+    creditos 2
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 6
+    nome Circuitos_Lógicos
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 7
+    nome Laboratório_de_Circuitos_Lógicos
+    creditos 2
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 8
+    nome Estruturas_de_Dados
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 9
+    nome Cálculo_2
+    creditos 6
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 10
+    nome Introdução_a_Álgebra_Linear
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 11
+    nome Organização_e_Arquitetura_de_Computadores
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 12
+    nome Técnicas_de_Programação_1
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 13
+    nome Álgebra_1
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 14
+    nome Cálculo_Numérico
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 15
+    nome Probabilidade_e_Estatística
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 16
+    nome Lógica_Computacional_1
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 17
+    nome Técnicas_de_Programação_2
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 18
+    nome Organização_de_Arquivos
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 19
+    nome Teoria_e_Aplicação_de_Grafos
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 20
+    nome Redes_de_Computadores
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 21
+    nome Linguagens_de_Programação
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 22
+    nome Programação_Concorrente
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 23
+    nome Engenharia_de_Software
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 24
+    nome Bancos_de_Dados
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 25
+    nome Introdução_a_Inteligência_Artificial
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 26
+    nome Software_Básico
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 27
+    nome Fundamentos_de_Sistemas_Operacionais
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 28
+    nome Autômatos_e_Computabilidade
+    creditos 6
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 29
+    nome Sistemas_de_Informação
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 30
+    nome Computação_Experimental
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 31
+    nome Projeto_e_Análise_de_Algoritmos
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 32
+    nome Compiladores
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 33
+    nome Segurança_Computacional
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 34
+    nome Metodologia_Científica
+    creditos 4
+    dificuldade 1.0
+  ]
+  node
+  [
+    id 35
+    nome Tópicos_Avançados_em_Computadores
+    creditos 2
+    dificuldade 1.0
   ]
   edge
   [
