@@ -12,21 +12,21 @@ graph
     id 2
     nome Introdução_a_Sistemas_Computacionais
     creditos 4
-    dificuldade 2.0
+    dificuldade 3.0
   ]
   node
   [
     id 3
     nome Fundamentos_Teóricos_da_Computação
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 4
     nome Algoritmos_e_Programação_de_Computadores
     creditos 6
-    dificuldade 2.0
+    dificuldade 1.0
   ]
   node
   [
@@ -47,35 +47,35 @@ graph
     id 7
     nome Laboratório_de_Circuitos_Lógicos
     creditos 2
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 8
     nome Estruturas_de_Dados
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 9
     nome Cálculo_2
     creditos 6
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 10
     nome Introdução_a_Álgebra_Linear
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 11
     nome Organização_e_Arquitetura_de_Computadores
     creditos 4
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
@@ -89,7 +89,7 @@ graph
     id 13
     nome Álgebra_1
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
@@ -110,7 +110,7 @@ graph
     id 16
     nome Lógica_Computacional_1
     creditos 4
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
@@ -124,35 +124,35 @@ graph
     id 18
     nome Organização_de_Arquivos
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 19
     nome Teoria_e_Aplicação_de_Grafos
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 20
     nome Redes_de_Computadores
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 21
     nome Linguagens_de_Programação
     creditos 4
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
     id 22
     nome Programação_Concorrente
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
@@ -166,76 +166,76 @@ graph
     id 24
     nome Bancos_de_Dados
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 25
     nome Introdução_a_Inteligência_Artificial
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 26
     nome Software_Básico
     creditos 4
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
     id 27
     nome Fundamentos_de_Sistemas_Operacionais
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 28
     nome Autômatos_e_Computabilidade
     creditos 6
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
     id 29
     nome Sistemas_de_Informação
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 30
     nome Computação_Experimental
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 31
     nome Projeto_e_Análise_de_Algoritmos
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 32
     nome Compiladores
     creditos 4
-    dificuldade 1.0
+    dificuldade 3.0
   ]
   node
   [
     id 33
     nome Segurança_Computacional
     creditos 4
-    dificuldade 1.0
+    dificuldade 2.0
   ]
   node
   [
     id 34
     nome Metodologia_Científica
-    creditos 4
+    creditos 2
     dificuldade 1.0
   ]
   node
@@ -248,11 +248,166 @@ graph
   edge
   [
     source 1
-    target 4
+    target 9
+  ]
+  edge
+  [
+    source 9
+    target 14
   ]
   edge
   [
     source 4
-    target 2
+    target 8
+  ]
+  edge
+  [
+    source 6
+    target 11
+  ]
+  edge
+  [
+    source 7
+    target 11
+  ]
+  edge
+  [
+    source 13
+    target 28
+  ]
+  edge
+  [
+    source 1
+    target 15
+  ]
+  edge
+  [
+    source 1
+    target 31
+  ]
+  edge
+  [
+    source 9
+    target 20
+  ]
+  edge
+  [
+    source 20
+    target 33
+  ]
+  edge
+  [
+    source 15
+    target 20
+  ]
+  edge
+  [
+    source 15
+    target 18
+  ]
+  edge
+  [
+    source 15
+    target 30
+  ]
+  edge
+  [
+    source 8
+    target 30
+  ]
+  edge
+  [
+    source 8
+    target 18
+  ]
+  edge
+  [
+    source 8
+    target 29
+  ]
+  edge
+  [
+    source 8
+    target 16
+  ]
+  edge
+  [
+    source 8
+    target 25
+  ]
+  edge
+  [
+    source 8
+    target 19
+  ]
+  edge
+  [
+    source 8
+    target 31
+  ]
+  edge
+  [
+    source 8
+    target 21
+  ]
+  edge
+  [
+    source 8
+    target 26
+  ]
+  edge
+  [
+    source 8
+    target 12
+  ]
+  edge
+  [
+    source 12
+    target 17
+  ]
+  edge
+  [
+    source 12
+    target 23
+  ]
+  edge
+  [
+    source 17
+    target 22
+  ]
+  edge
+  [
+    source 22
+    target 27
+  ]
+  edge
+  [
+    source 11
+    target 22
+  ]
+  edge
+  [
+    source 11
+    target 26
+  ]
+  edge
+  [
+    source 26
+    target 32
+  ]
+  edge
+  [
+    source 21
+    target 32
+  ]
+  edge
+  [
+    source 28
+    target 32
+  ]
+  edge
+  [
+    source 18
+    target 24
   ]
 ]
