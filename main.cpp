@@ -19,14 +19,19 @@ void a(int v) {
 
 int main(int argc, char** argv) {
 
-	Grafo karate = createGrafo ("grafo.txt");
 
-	deque<int> ordTop = ordenacaoTopologica(karate);
+	Nomes names;
+	Creditos credits;
+	Estresses stress;
 
-	for (auto vert: ordTop) {
-		cout << vert << " ";
-	}
-	cout << "\n";
+	Grafo karate = createGrafo ("grafo.txt", names, credits, stress);
+
+	// deque<int> ordTop = ordenacaoTopologica(karate);
+
+	// for (auto vert: ordTop) {
+	// 	cout << vert << " ";
+	// }
+	// cout << "\n";
 	
 	return 0;
 

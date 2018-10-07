@@ -16,7 +16,7 @@ typedef vector<int> Creditos;
 typedef vector<float> Estresses;
 
 // createGrafo: A partir do nome do arquivo, chama as funções para criação do grafo.
-vector<vector<int> > createGrafo (const string& fileName);
+vector<vector<int> > createGrafo (const string& fileName, Nomes names, Creditos credits, Estresses stress);
 
 // grafoSize: A partir do arquivo, procura onde "node" é citado para retornar número de vértices. 
 size_t grafoSize (fstream& fileStream);

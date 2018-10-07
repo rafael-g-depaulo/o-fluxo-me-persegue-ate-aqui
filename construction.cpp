@@ -14,22 +14,22 @@
 using namespace std;
 
 // createGrafo: A partir do nome do arquivo, chama as funções para criação do grafo.
-vector<vector<int> > createGrafo (const string& fileName) {
+vector<vector<int> > createGrafo (const string& fileName, Nomes names, Creditos credits, Estresses stress) {
     fstream arquivo(fileName);
 
     int _size = grafoSize(arquivo); 
 
     Grafo g;
-    Nomes names(_size);
-    Creditos credits(_size);
-    Estresses stress(_size);
+	cout << "tamanho " << _size << "\n";
     
     makeNodes(_size, g);
     makeEdges(arquivo, g);
 
+	cout << "terminou 0\n";
     fstream file(fileName);
+	cout << "terminou 1\n";
     setupInfo(file, names, credits, stress);
-
+	cout << "terminou 3\n";
     return g;
 }
 
@@ -50,7 +50,6 @@ size_t grafoSize (fstream& fileStream) {
 	else {
 		throw "Erro ao ler o arquivo!";
 	}
-
 	return size;
 }
 
@@ -106,8 +105,9 @@ void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits
 	string buffer;
 	while (getline(fileStream, buffer)) {
 		if (buffer.find("nome") != string::npos) {
-			int   index = 0, credit = 0;
+			int   credit = 0;
 			char  name [40];
+			string name_str;
 			float estresse = 0;
 
 			sscanf(buffer.c_str(), "    nome %s", name);
@@ -116,14 +116,16 @@ void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits
 			getline(fileStream, buffer);
 			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
 
-			names[index] = name;
-			credits[index] = credit;
-			stress[index] = estresse;
-			index++;
+			name_str.insert(0, name);
+			names.push_back(name_str);
+			credits.push_back(credit);
+			stress.push_back(estresse);
 		}
 
 		if (buffer.find("edge") != string::npos) {
-      		return;
+      		
+			  cout << "terminou 2\n";
+			  return;
     	}
 	}
 }
