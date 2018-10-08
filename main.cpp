@@ -21,7 +21,7 @@ void a(int v) {
 int main(int argc, char** argv) {
 
 
-	Nomes names;
+	// Nomes names;
 	Creditos credits;
 	Estresses stress;
 
@@ -47,13 +47,10 @@ int main(int argc, char** argv) {
 	stress.push_back(1.0);
 	stress.push_back(1.0);
 
-	deque<int> caminho = criticalPath(g, credits, stress, 0);
+	// deque<int> caminho = criticalPath(g, credits, stress, 0);
+	credits = getCredit("grafo.txt");
+	stress = getStress("grafo.txt");
 	
-	for (auto v : caminho) {
-		cout << "aa: " << v << endl;
-	}
-	cout << "cabou\n";
-
 	return 0;
 
 }

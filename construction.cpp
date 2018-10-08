@@ -95,6 +95,47 @@ void makeEdges (fstream& fileStream, vector<vector<int> >& grafo) {
 	}
 }
 
+Creditos getCredit (const string& fileName) {
+	fstream fileStream(fileName);
+	if (!fileStream.is_open())
+		throw "Erro ao ler o arquivo";
+
+	Creditos cred;
+	string buffer;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("creditos") != string::npos) {
+			int   credit;
+			sscanf(buffer.c_str(), "    creditos %d", &credit);
+			cred.push_back(credit);
+		}
+
+		if (buffer.find("edge") != string::npos)
+			break;
+	}
+
+	return cred;
+}
+
+Estresses getStress (const string& fileName){
+	fstream fileStream(fileName);
+	if (!fileStream.is_open())
+		throw "Erro ao ler o arquivo";
+
+	Estresses stress;
+	string buffer;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("dificuldade") != string::npos) {
+			float dif;
+			sscanf(buffer.c_str(), "    dificuldade %f", &dif);
+			stress.push_back(dif);
+		}
+
+		if (buffer.find("edge") != string::npos)
+			break;
+	}
+
+	return stress;
+}
 
 // monta os vetores com informações sobre as matérias
 void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress) {
