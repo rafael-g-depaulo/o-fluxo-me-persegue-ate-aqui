@@ -5,9 +5,10 @@ using namespace std;
 
 #define INF 99999999
 
+// vertice, vertice anterior, distancia entre vertice e origem
 typedef tuple<int, int, int> Cam;
 
-deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int v1) {
+deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int src) {
     priority_queue<Cam, vector<Cam>, function<bool (Cam, Cam)> >
     caminhos([] (Cam c1, Cam c2) {
         int c1Dist, c2Dist;
@@ -16,52 +17,63 @@ deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int v1) {
         return c1 > c2;
     });
 
-    queue<pair<int, int> > finished;
-    // colocar os adjacentes do vertice inicial na queue
-    caminhos.push(make_tuple(v1, v1, 0));
+    // vector<vertice de onde veio, distancia até origem>
+    vector<pair<int, int> > maisCurto(g.size(), make_pair(src, INF));
 
-    // bool chegouV2 = false;
-    int counter = 10;
-    int distProx, distChegada = INF;
-    do {
-        // pegar o vertice do caminho atualmente mais curto
-        int atual, prev, distAtual;
-        tie (atual, prev, distAtual) = caminhos.top();
-        cout << "..... atual: " << atual << endl;
-        // para cada adjacente do vértice atual, adicioná-lo aos caminhos
-        for (int v: g[atual]) {
-            caminhos.push(make_tuple(v, atual, distAtual +  c[atual] * e[atual]));
-            cout << "atual: " << v << " anterior: " << atual << " dist: " << distAtual << "\n";
-            // se chegou em uma folha
-            if (g[atual].empty()) {
-                distChegada = distAtual;
-                cout << "querida, cheguei!!!\n";
+    caminhos.push(make_tuple(src, src, 0));
+    maisCurto[src] = make_pair(src, 0); 
+
+    vector<bool> folhas(g.size(), false);
+
+    while (!caminhos.empty()) {
+        int atual;
+        tie (atual, ignore, ignore) = caminhos.top();
+        // se chegou em um nó folha
+        if (g[atual].empty())
+            folhas[atual] = true;
+        caminhos.pop();
+
+        for (auto v: g[atual]) {
+            int peso = c[atual] * e[atual];
+
+            // se distancia ate atual + peso eh maior que distancia ate v, adicione a queue
+            if (maisCurto[v].second > maisCurto[atual].second + peso) {
+                // update na distancia
+                maisCurto[v] = make_pair(atual, maisCurto[atual].second + peso);
+                // coloca o caminho
+                caminhos.push(make_tuple(v, atual, peso));
             }
-        }
-        finished.push(pair<int, int>(atual, prev));
-        caminhos.pop();
-        tie (ignore, ignore, distProx) = caminhos.top();
-    } while (/* !chegouV2 */distChegada >= distProx && counter-- > 0);
-    cout << "\npara\n";
-    // agora construir um caminho reverso a partir da queue com as informações dadas
-    int vAtualRev;
-    deque<int> caminhoMenor;
-    while (vAtualRev != v1) {
-        int vAt, vPrev;
-        tie (vAt, vPrev, ignore) = caminhos.top();
-        caminhos.pop();
-
-        // se achou o vertice atual do caminho reverso
-        if (vAt == vAtualRev) {
-            // coloca o vértice atual no deque do caminho
-            caminhoMenor.push_front(vAt);
-            // muda o vAtualRev pra ser o próximo vertice no caminho reverso
-            vAtualRev = vPrev;
         }
     }
 
-    cout << "caminhos.size: " << caminhos.size() << endl;
-    cout << "finished.size: " << finished.size() << endl;
-    cout << "caminhoMenor.size: " << caminhoMenor.size() << endl;
+    // agora achar a folha com a menor distancia da origem
+    int folhaMenor = 0, folhaMenorDist = INF;
+    for (unsigned int i = 0; i < g.size(); i++)
+        if (folhas[i] && maisCurto[i].second < folhaMenorDist) {
+            folhaMenor = i;
+            folhaMenorDist = maisCurto[i].second;
+        }
+
+    // começar da menor folha, e fazer o caminho reverso até chegar em src
+    deque<int> caminhoMenor;
+    int noAtual = folhaMenor;
+    caminhoMenor.push_front(folhaMenor);
+    do {
+        caminhoMenor.push_front(maisCurto[noAtual].first);
+        noAtual = maisCurto[noAtual].first;
+    } while (noAtual != src);
+    
     return caminhoMenor;
+}
+
+deque<int> criticalPath(Grafo g, Creditos c, Estresses e, int src) {
+    for (unsigned int i = 0; i < c.size(); i++)
+        c[i] *= -1;
+
+    deque<int> critPath = shortestPathToLeaf(g, c, e, src);
+
+    for (unsigned int i = 0; i < c.size(); i++)
+        c[i] *= -1;
+
+    return critPath;
 }

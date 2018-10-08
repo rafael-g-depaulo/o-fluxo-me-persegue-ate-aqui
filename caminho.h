@@ -8,4 +8,5 @@ using namespace std;
 
 typedef pair<int, vector<int> > Caminho;
 
-deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int v1);
+deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int src);
+deque<int> criticalPath(Grafo g, Creditos c, Estresses e, int src);

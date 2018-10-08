@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 	stress.push_back(1.0);
 	stress.push_back(1.0);
 
-	deque<int> caminho = shortestPathToLeaf(g, credits, stress, 0);
+	deque<int> caminho = criticalPath(g, credits, stress, 0);
 	
 	for (auto v : caminho) {
 		cout << "aa: " << v << endl;
