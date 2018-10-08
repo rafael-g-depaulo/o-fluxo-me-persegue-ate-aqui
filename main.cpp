@@ -9,6 +9,7 @@
 #include <list>
 #include "construction.h"
 #include "ordenacao.h"
+#include "caminho.h"
 #include "dfs.h"
 
 using namespace std;
@@ -24,15 +25,35 @@ int main(int argc, char** argv) {
 	Creditos credits;
 	Estresses stress;
 
-	Grafo karate = createGrafo ("grafo.txt", names, credits, stress);
+	// Grafo karate = createGrafo ("grafo.txt", names, credits, stress);
+	Grafo g;
+	for (int i = 0; i < 5; i++)
+		g.push_back(vector<int>());
+	g[0].push_back(1);
+	g[0].push_back(2);
+	g[1].push_back(3);
+	g[2].push_back(4);
+	g[3].push_back(4);
 
-	// deque<int> ordTop = ordenacaoTopologica(karate);
+	credits.push_back(3);
+	credits.push_back(4);
+	credits.push_back(6);
+	credits.push_back(3);
+	credits.push_back(0);
 
-	// for (auto vert: ordTop) {
-	// 	cout << vert << " ";
-	// }
-	// cout << "\n";
+	stress.push_back(1.0);
+	stress.push_back(1.0);
+	stress.push_back(1.0);
+	stress.push_back(1.0);
+	stress.push_back(1.0);
+
+	deque<int> caminho = criticalPath(g, credits, stress, 0);
 	
+	for (auto v : caminho) {
+		cout << "aa: " << v << endl;
+	}
+	cout << "cabou\n";
+
 	return 0;
 
 }

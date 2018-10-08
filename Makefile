@@ -14,14 +14,14 @@ CC = g++
 CFLAGS = -c -g -Wall -std=c++11
 
 # modulos
-MODULES = construction.o grau.o ordenacao.o dfs.o
+MODULES = construction.o grau.o ordenacao.o dfs.o caminho.o
 
 # Compila o executavel a partir dos .o's
-executavel: main.o $(MODULES)
+executavel: $(MODULES) main.o
 	$(CC) main.o $(MODULES) -fPIC -o main
 
 # modulo principal, o programa em si
-main.o: main.cpp construction.o dfs.o
+main.o: main.cpp $(MODULES)
 	$(CC) $(CFLAGS) main.cpp
 	
 # modulo de leitura de arquivo e criação do grafo
@@ -39,3 +39,7 @@ ordenacao.o: ordenacao.cpp
 # modulo que percorre o grafo em DFS
 dfs.o: dfs.cpp
 	$(CC) $(CFLAGS) dfs.cpp
+
+# modulo que acha o menor caminho
+caminho.o: caminho.cpp
+	$(CC) $(CFLAGS) caminho.cpp
