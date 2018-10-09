@@ -1,8 +1,15 @@
+// Projeto 2 de Teoria e Aplicação de Grafos, Turma A
+// Prof.: Díbio
+// Autores: Rafael Gonçalves de Paulo (17/0043959)
+//          João Lucas Azevedo Yamin Rodrigues da Cunha (17/0013731)
+// ordenacao.c: Arquivo de implementação de funções para ordenação topológica
+
 #include "ordenacao.h"
 #include "grau.h"
 #include "dfs.h"
 #include <iostream>
 
+// ordenacaoTopologica: Função principal de ordenação topologica
 deque<int> ordenacaoTopologica(Grafo& grafo) {
     vector<int> roots = getRoots(grafo);    // pega os possíveis pontos iniciais
     if (roots.empty()) {
@@ -16,6 +23,7 @@ deque<int> ordenacaoTopologica(Grafo& grafo) {
     return ord;
 }
 
+// getRoots: Acha todos os vértices que são referenciados por nenhum outro vértice
 vector<int> getRoots(Grafo& grafo) {
     vector<bool> rootsBool(grafo.size(), true);
 

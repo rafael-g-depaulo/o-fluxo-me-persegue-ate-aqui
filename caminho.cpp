@@ -8,6 +8,7 @@ using namespace std;
 // vertice, vertice anterior, distancia entre vertice e origem
 typedef tuple<int, int, int> Cam;
 
+// shortestPathToLeaf: encontra o menor caminho para uma folha
 deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int src) {
     priority_queue<Cam, vector<Cam>, function<bool (Cam, Cam)> >
     caminhos([] (Cam c1, Cam c2) {
@@ -66,6 +67,7 @@ deque<int> shortestPathToLeaf(Grafo g, Creditos c, Estresses e, int src) {
     return caminhoMenor;
 }
 
+// criticalPath: encontra o caminho crítico
 deque<int> criticalPath(Grafo g, Creditos c, Estresses e, int src) {
     for (unsigned int i = 0; i < c.size(); i++)
         c[i] *= -1;

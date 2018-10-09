@@ -1,8 +1,8 @@
-// Projeto 1 de Teoria e Aplicação de Grafos, Turma A
+// Projeto 2 de Teoria e Aplicação de Grafos, Turma A
 // Prof.: Díbio
 // Autores: Rafael Gonçalves de Paulo (17/0043959)
 //          João Lucas Azevedo Yamin Rodrigues da Cunha (17/0013731)
-// construction.h: Declaração de funções necessárias para a montagem do grafo
+// construction.h: Declaração de funções necessárias para a montagem do grafo e seus vetores auxiliares
 
 #include <string>
 #include <vector>
@@ -26,11 +26,14 @@ size_t grafoSize (fstream& fileStream);
 void makeNodes (size_t size, vector<vector<int> >& grafo);
 
 // monta os vetores com informações sobre as matérias
+// setupNames: através do arquivo, cria e retorna um vetor constando todos os nomes lidos no arquivo 
 vector<string> setupNames (fstream& fileStream);
+
+// setupCredits: através do arquivo, cria e retorna um vetor constando todos os créditos lidos no arquivo 
 vector<int> setupCredits (fstream& fileStream);
+
+// setupStress: através do arquivo, cria e retorna um vetor constando todos as dificuldades lidas no arquivo 
 vector<float> setupStress (fstream& fileStream);
-
-
 
 // connectEdge: a partir do vetor principal do grafo e de dois vértices, adiciona às listas 
 // de adjacência de um o vértice do outro.

@@ -1,8 +1,9 @@
-// Projeto 1 de Teoria e Aplicação de Grafos, Turma A
+// Projeto 2 de Teoria e Aplicação de Grafos, Turma A
 // Prof.: Díbio
 // Autores: Rafael Gonçalves de Paulo (17/0043959)
 //          João Lucas Azevedo Yamin Rodrigues da Cunha (17/0013731)
-// construction.cpp: Arquivo de implementação das funções necessárias para construção do grafo
+// construction.cpp: Arquivo de implementação das funções necessárias para construção do grafo e
+// seus vetores auxiliares
 
 #include <string>
 #include <vector>
@@ -89,6 +90,94 @@ void makeEdges (fstream& fileStream, vector<vector<int> >& grafo) {
 }
 
 
+// setupNames: através do arquivo, cria e retorna um vetor constando todos os nomes lidos no arquivo 
+vector<string> setupNames (fstream& fileStream) {
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	Nomes  n;
+	string buffer;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("nome") != string::npos) {			//Procura a palavra chave no código
+			char  name [100];
+			string name_str;
+
+			sscanf(buffer.c_str(), "    nome %s", name);	//Captura o valor desejado na linha
+
+			name_str.insert(0, name); 										
+
+			for (unsigned int i = 0; i < name_str.size(); ++i) { 	//Altera os underlines por espaços
+				if (name_str[i] == '_') {
+					name_str[i] = ' ';
+				}
+			}
+
+			n.push_back(name_str);												//Insere no vetor
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      		
+			  return n;
+    }
+	}
+	return n;
+}
+
+// setupCredits: através do arquivo, cria e retorna um vetor constando todos os créditos lidos no arquivo 
+vector<int> setupCredits (fstream& fileStream) {
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	string buffer;
+	Creditos c;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("creditos") != string::npos) {					//Procura a palavra chave no código
+			int credit = 0;
+
+			sscanf(buffer.c_str(), "    creditos %d", &credit);		//Captura o valor desejado na linha
+
+			c.push_back(credit);																	//Insere no vetor
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      		
+			  return c;
+    	}
+	}
+
+	return c;
+}
+
+// setupStress: através do arquivo, cria e retorna um vetor constando todos as dificuldades lidas no arquivo 
+vector<float> setupStress (fstream& fileStream){
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	string buffer;
+	Estresses s;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("dificuldade") != string::npos) { 					//Procura a palavra chave no código
+			float estresse = 0;
+
+			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);	//Captura o valor desejado na linha
+
+			s.push_back(estresse);																		//Insere no vetor
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      		
+			  return s;
+    	}
+	}
+
+	return s;
+}
+
+// INUTILIZADO:
+
 // monta os vetores com informações sobre as matérias
 // void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress) {
 // 	if (!fileStream.is_open()){
@@ -122,84 +211,3 @@ void makeEdges (fstream& fileStream, vector<vector<int> >& grafo) {
 //     	}
 // 	}
 // }
-
-vector<string> setupNames (fstream& fileStream) {
-	if (!fileStream.is_open()){
-		throw "Erro ao ler o arquivo";
-	}
-
-	Nomes  n;
-	string buffer;
-	while (getline(fileStream, buffer)) {
-		if (buffer.find("nome") != string::npos) {
-			char  name [100];
-			string name_str;
-
-			sscanf(buffer.c_str(), "    nome %s", name);
-
-			name_str.insert(0, name);
-
-			for (unsigned int i = 0; i < name_str.size(); ++i) {
-				if (name_str[i] == '_') {
-					name_str[i] = ' ';
-				}
-			}
-
-			n.push_back(name_str);
-		}
-
-		if (buffer.find("edge") != string::npos) {
-      		
-			  return n;
-    }
-	}
-	return n;
-}
-vector<int> setupCredits (fstream& fileStream) {
-	if (!fileStream.is_open()){
-		throw "Erro ao ler o arquivo";
-	}
-
-	string buffer;
-	Creditos c;
-	while (getline(fileStream, buffer)) {
-		if (buffer.find("creditos") != string::npos) {
-			int credit = 0;
-
-			sscanf(buffer.c_str(), "    creditos %d", &credit);
-
-			c.push_back(credit);
-		}
-
-		if (buffer.find("edge") != string::npos) {
-      		
-			  return c;
-    	}
-	}
-
-	return c;
-}
-vector<float> setupStress (fstream& fileStream){
-	if (!fileStream.is_open()){
-		throw "Erro ao ler o arquivo";
-	}
-
-	string buffer;
-	Estresses s;
-	while (getline(fileStream, buffer)) {
-		if (buffer.find("dificuldade") != string::npos) {
-			float estresse = 0;
-
-			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
-
-			s.push_back(estresse);
-		}
-
-		if (buffer.find("edge") != string::npos) {
-      		
-			  return s;
-    	}
-	}
-
-	return s;
-}
