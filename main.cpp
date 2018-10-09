@@ -24,35 +24,44 @@ int main(int argc, char** argv) {
 	Nomes names;
 	Creditos credits;
 	Estresses stress;
+	fstream arquivo1("grafo.txt");
+	fstream arquivo2("grafo.txt");
+	fstream arquivo3("grafo.txt");
 
-	// Grafo karate = createGrafo ("grafo.txt", names, credits, stress);
-	Grafo g;
-	for (int i = 0; i < 5; i++)
-		g.push_back(vector<int>());
-	g[0].push_back(1);
-	g[0].push_back(2);
-	g[1].push_back(3);
-	g[2].push_back(4);
-	g[3].push_back(4);
+	Grafo fluxo = createGrafo ("grafo.txt");
+	names = setupNames(arquivo1);
+	credits = setupCredits(arquivo2);
+	stress = setupStress(arquivo3);
 
-	credits.push_back(3);
-	credits.push_back(4);
-	credits.push_back(6);
-	credits.push_back(3);
-	credits.push_back(0);
+	deque<int> ordenado = ordenacaoTopologica(fluxo);
+	deque<int> caminho  = criticalPath(fluxo, credits, stress, 0);
 
-	stress.push_back(1.0);
-	stress.push_back(1.0);
-	stress.push_back(1.0);
-	stress.push_back(1.0);
-	stress.push_back(1.0);
-
-	deque<int> caminho = criticalPath(g, credits, stress, 0);
-	
-	for (auto v : caminho) {
-		cout << "aa: " << v << endl;
+	cout << endl << "Fluxo de matérias: " << endl << endl;
+	for (unsigned int i = 0; i < fluxo.size(); i++) {
+		cout << i << ": " << names[i] << ". Adjacências: ";
+		if (fluxo[i].size() == 0) {
+				cout << "--";
+		} else {
+			for (auto v : fluxo[i]){
+				cout << v << "; ";
+			}
+		} 
+		
+		cout << endl;
 	}
-	cout << "cabou\n";
+	
+	cout << endl << "Ordenação topológica: " << endl;
+	int j = 0;
+	for (auto v : ordenado) {
+		j++;
+		cout << j << ": " << v << " - " << names[v] << endl;
+	}
+	j = 0;
+	cout << endl << "Caminho crítico: " << endl;
+	for (auto v : caminho) {
+		j++;
+		cout << j << ": " << v << " - " << names[v] << endl;
+	}
 
 	return 0;
 

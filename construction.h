@@ -16,7 +16,7 @@ typedef vector<int> Creditos;
 typedef vector<float> Estresses;
 
 // createGrafo: A partir do nome do arquivo, chama as funções para criação do grafo.
-vector<vector<int> > createGrafo (const string& fileName, Nomes names, Creditos credits, Estresses stress);
+vector<vector<int> > createGrafo (const string& fileName);
 
 // grafoSize: A partir do arquivo, procura onde "node" é citado para retornar número de vértices. 
 size_t grafoSize (fstream& fileStream);
@@ -26,7 +26,11 @@ size_t grafoSize (fstream& fileStream);
 void makeNodes (size_t size, vector<vector<int> >& grafo);
 
 // monta os vetores com informações sobre as matérias
-void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress);
+vector<string> setupNames (fstream& fileStream);
+vector<int> setupCredits (fstream& fileStream);
+vector<float> setupStress (fstream& fileStream);
+
+
 
 // connectEdge: a partir do vetor principal do grafo e de dois vértices, adiciona às listas 
 // de adjacência de um o vértice do outro.

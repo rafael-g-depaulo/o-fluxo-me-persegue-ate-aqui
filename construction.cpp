@@ -14,22 +14,15 @@
 using namespace std;
 
 // createGrafo: A partir do nome do arquivo, chama as funções para criação do grafo.
-vector<vector<int> > createGrafo (const string& fileName, Nomes names, Creditos credits, Estresses stress) {
+vector<vector<int> > createGrafo (const string& fileName) {
     fstream arquivo(fileName);
 
     int _size = grafoSize(arquivo); 
 
     Grafo g;
-	cout << "tamanho " << _size << "\n";
     
     makeNodes(_size, g);
     makeEdges(arquivo, g);
-
-	cout << "terminou 0\n";
-    fstream file(fileName);
-	cout << "terminou 1\n";
-    setupInfo(file, names, credits, stress);
-	cout << "terminou 3\n";
     return g;
 }
 
@@ -97,35 +90,116 @@ void makeEdges (fstream& fileStream, vector<vector<int> >& grafo) {
 
 
 // monta os vetores com informações sobre as matérias
-void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress) {
+// void setupInfo (fstream& fileStream, vector<string>& names, vector<int>& credits, vector<float>& stress) {
+// 	if (!fileStream.is_open()){
+// 		throw "Erro ao ler o arquivo";
+// 	}
+
+// 	string buffer;
+// 	while (getline(fileStream, buffer)) {
+// 		if (buffer.find("nome") != string::npos) {
+// 			int   credit = 0;
+// 			char  name [100];
+// 			string name_str;
+// 			float estresse = 0;
+
+// 			sscanf(buffer.c_str(), "    nome %s", name);
+// 			getline(fileStream, buffer);
+// 			sscanf(buffer.c_str(), "    creditos %d", &credit);
+// 			getline(fileStream, buffer);
+// 			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
+
+// 			name_str.insert(0, name);
+// 			names.push_back(name_str);
+// 			credits.push_back(credit);
+// 			stress.push_back(estresse);
+// 		}
+
+// 		if (buffer.find("edge") != string::npos) {
+      		
+// 			  cout << "terminou 2\n";
+// 			  return;
+//     	}
+// 	}
+// }
+
+vector<string> setupNames (fstream& fileStream) {
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	Nomes  n;
+	string buffer;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("nome") != string::npos) {
+			char  name [100];
+			string name_str;
+
+			sscanf(buffer.c_str(), "    nome %s", name);
+
+			name_str.insert(0, name);
+
+			for (unsigned int i = 0; i < name_str.size(); ++i) {
+				if (name_str[i] == '_') {
+					name_str[i] = ' ';
+				}
+			}
+
+			n.push_back(name_str);
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      		
+			  return n;
+    }
+	}
+	return n;
+}
+vector<int> setupCredits (fstream& fileStream) {
 	if (!fileStream.is_open()){
 		throw "Erro ao ler o arquivo";
 	}
 
 	string buffer;
+	Creditos c;
 	while (getline(fileStream, buffer)) {
-		if (buffer.find("nome") != string::npos) {
-			int   credit = 0;
-			char  name [40];
-			string name_str;
-			float estresse = 0;
+		if (buffer.find("creditos") != string::npos) {
+			int credit = 0;
 
-			sscanf(buffer.c_str(), "    nome %s", name);
-			getline(fileStream, buffer);
 			sscanf(buffer.c_str(), "    creditos %d", &credit);
-			getline(fileStream, buffer);
-			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
 
-			name_str.insert(0, name);
-			names.push_back(name_str);
-			credits.push_back(credit);
-			stress.push_back(estresse);
+			c.push_back(credit);
 		}
 
 		if (buffer.find("edge") != string::npos) {
       		
-			  cout << "terminou 2\n";
-			  return;
+			  return c;
     	}
 	}
+
+	return c;
+}
+vector<float> setupStress (fstream& fileStream){
+	if (!fileStream.is_open()){
+		throw "Erro ao ler o arquivo";
+	}
+
+	string buffer;
+	Estresses s;
+	while (getline(fileStream, buffer)) {
+		if (buffer.find("dificuldade") != string::npos) {
+			float estresse = 0;
+
+			sscanf(buffer.c_str(), "    dificuldade %f", &estresse);
+
+			s.push_back(estresse);
+		}
+
+		if (buffer.find("edge") != string::npos) {
+      		
+			  return s;
+    	}
+	}
+
+	return s;
 }
